@@ -9,6 +9,8 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private TextView txthelloWorld;
+    private TextView txthiworld;
+    private boolean isHelloWorldUp;
 
 
     @Override
@@ -18,14 +20,34 @@ public class MainActivity extends AppCompatActivity {
 
 
         txthelloWorld = findViewById(R.id.txthelloWorld);
+        txthiworld = findViewById(R.id.txthelloWorld2);
 
         txthelloWorld.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                // Log.i("MyTag","Hello World");
-                txthelloWorld.animate().scaleX(10f).setDuration(2000);
+              //  txthelloWorld.animate().alpha(0).setDuration(3000);
+              //  txthiworld.animate().alpha(1).setDuration(3000);
+                if (isHelloWorldUp==true) {
+                    txthelloWorld.animate().alpha(0).setDuration(3000);
+                     txthiworld.animate().alpha(1).setDuration(3000);
+                     isHelloWorldUp = false;
+
+                }
+                else if (!isHelloWorldUp){
+
+                    txthelloWorld.animate().alpha(1).setDuration(3000);
+                    txthiworld.animate().alpha(0).setDuration(3000);
+
+                    isHelloWorldUp = true;
+
+                }
+
             }
+
+
         });
+
     }
 }
